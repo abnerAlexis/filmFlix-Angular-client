@@ -3,37 +3,41 @@ import { MatDialogRef } from '@angular/material/dialog'; //Closes the dialog on 
 import { FetchApiDataService } from '../fetch-api-data.service'; //API calls in fetch-api-data
 import { MatSnackBar } from '@angular/material/snack-bar'; //Displays notifications back to the user
 
-//Component(defining component) and Input(defining component's input/userdata) are decorators.
 @Component({
-  selector: 'app-user-registration-form', //Defines the custom HTML element <app-user-registration-form></app-user-registration-form>
-  templateUrl: './user-registration-form.component.html',
-  styleUrl: './user-registration-form.component.scss',
+  selector: 'app-user-login-form', //Defines the custom HTML element <app-user-login-form></app-user-login-form>
+  templateUrl: './user-login-form.component.html',
+  styleUrl: './user-login-form.component.scss'
 })
-export class UserRegistrationFormComponent implements OnInit {
+export class UserLoginFormComponent implements OnInit{
 
-  @Input() userData = { Username: '', Password: '', Email: '', Birthday: '' };
+  @Input() userData = { Username: '', Password: ''};
 
   constructor(
     public fetchApiData: FetchApiDataService,
-    public dialogRef: MatDialogRef<UserRegistrationFormComponent>,
-    public snackBar: MatSnackBar) { }
+    public dialogRef: MatDialogRef<UserLoginFormComponent>,
+    public snackBar: MatSnackBar,
+  ) {}
+  
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
-  }
-
-  registerUser(): void {
-    this.fetchApiData.userRegistration(this.userData).subscribe({
+  loginUser(): void {
+    const loginData = {
+      Username: this.userData.Username,
+      Password: this.userData.Password
+    }
+    this.fetchApiData.userLogin(loginData).subscribe({
       next: (response) => {
         localStorage.setItem('user', JSON.stringify(response.user));
         localStorage.setItem('token', response.token);
         console.log('Response: ' + JSON.stringify(response));
-        this.snackBar.open('Registration successful!', 'OK', {
+        this.snackBar.open('Login successful!', 'OK', {
           duration: 2000
         });
+
         this.dialogRef.close(); // This will close the modal on success
       },
       error: (error) => {
-        console.log(error);
+        console.log('Error: ' + error);
         this.snackBar.open(error, 'OK', {
           duration: 2000
         });
