@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core'; // src/app/user-regist
 import { MatDialogRef } from '@angular/material/dialog'; //Closes the dialog on success
 import { FetchApiDataService } from '../fetch-api-data.service'; //API calls in fetch-api-data
 import { MatSnackBar } from '@angular/material/snack-bar'; //Displays notifications back to the user
+import { UserRegistrationFormComponent } from '../user-registration-form/user-registration-form.component';
 
 @Component({
   selector: 'app-user-login-form', //Defines the custom HTML element <app-user-login-form></app-user-login-form>
@@ -14,8 +15,8 @@ export class UserLoginFormComponent implements OnInit{
 
   constructor(
     public fetchApiData: FetchApiDataService,
-    public dialogRef: MatDialogRef<UserLoginFormComponent>,
-    public snackBar: MatSnackBar,
+        public dialogRef: MatDialogRef<UserRegistrationFormComponent>,
+        public snackBar: MatSnackBar,
   ) {}
   
   ngOnInit(): void {}
