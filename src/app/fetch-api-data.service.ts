@@ -35,6 +35,7 @@ export class FetchApiDataService {
   //get movies " /movies "
   getAllMovies(): Observable<any> {
     const token = localStorage.getItem('token');
+    console.log('In getAllMovies(), Token used for request:', token);
     return this.http.get(apiUrl + 'movies', {
       headers: new HttpHeaders(
         {
@@ -44,11 +45,6 @@ export class FetchApiDataService {
       map(this.extractResponseData),
       catchError(this.handleError)
     );
-  }
-
-  private extractResponseData(res: any): any {
-    const body = res.json();
-    return body || {};
   }
 
   //get movie by title  /movies/:Title
@@ -175,6 +171,10 @@ export class FetchApiDataService {
       map(this.extractResponseData),
       catchError(this.handleError)
     );
+  }
+
+  private extractResponseData(res: Object): any {
+    return res || {};
   }
 
   private handleError(error: HttpErrorResponse): any {

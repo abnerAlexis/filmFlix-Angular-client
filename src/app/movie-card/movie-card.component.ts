@@ -12,17 +12,24 @@ export class MovieCardComponent implements OnInit {
   constructor(
     public fetchApiData: FetchApiDataService,
     public dialog: MatDialog
-  ) {}
+  ) { }
 
   //After the component is mounted this will be called
   ngOnInit(): void {
-    this.getMovies();
+    console.log(this.getMovies());
   }
+  
   getMovies(): void {
-    this.fetchApiData.getAllMovies().subscribe((resp: any) => {
-      this.movies = resp;
-      console.log('Movies(In getMovies): ' + this.movies);
-      return this.movies;
-    });
+    this.fetchApiData.getAllMovies()
+      .subscribe({
+        next: (response: any) => {
+          // Assign movies to the component property
+          this.movies = response;
+          console.log('Movies fetched successfully:', response); // For debugging
+        },
+        error: (error: any) => {
+          console.error('Error fetching movies:', error);
+        },
+      });
   }
 }
