@@ -3,6 +3,7 @@ import { MatDialogRef } from '@angular/material/dialog'; //Closes the dialog on 
 import { FetchApiDataService } from '../fetch-api-data.service'; //API calls in fetch-api-data
 import { MatSnackBar } from '@angular/material/snack-bar'; //Displays notifications back to the user
 import { UserRegistrationFormComponent } from '../user-registration-form/user-registration-form.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-login-form', //Defines the custom HTML element <app-user-login-form></app-user-login-form>
@@ -17,6 +18,7 @@ export class UserLoginFormComponent implements OnInit{
     public fetchApiData: FetchApiDataService,
         public dialogRef: MatDialogRef<UserRegistrationFormComponent>,
         public snackBar: MatSnackBar,
+        public router: Router,
   ) {}
   
   ngOnInit(): void {}
@@ -36,6 +38,7 @@ export class UserLoginFormComponent implements OnInit{
           duration: 2000
         });
 
+        this.router.navigate(['movies'])
         this.dialogRef.close(); // This will close the modal on success
       },
       error: (error) => {
