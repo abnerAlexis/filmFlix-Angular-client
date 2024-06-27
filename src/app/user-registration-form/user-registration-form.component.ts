@@ -26,7 +26,7 @@ export class UserRegistrationFormComponent implements OnInit {
       next: (response) => {
         localStorage.setItem('user', JSON.stringify(response.user));
         localStorage.setItem('token', response.token);
-        console.log('Response: ' + JSON.stringify(response));
+        // console.log('Response: ' + JSON.stringify(response));
         this.snackBar.open('Registration successful!', 'OK', {
           duration: 2000
         });

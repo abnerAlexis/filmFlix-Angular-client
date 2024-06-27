@@ -17,7 +17,7 @@ export class MovieCardComponent implements OnInit {
   //After the component is mounted this will be called
   ngOnInit(): void {
     console.log(this.getMovies());
-  }
+  }   
   
   getMovies(): void {
     this.fetchApiData.getAllMovies()
@@ -25,7 +25,7 @@ export class MovieCardComponent implements OnInit {
         next: (response: any) => {
           // Assign movies to the component property
           this.movies = response;
-          console.log('Movies fetched successfully:', response); // For debugging
+          // console.log('Movies fetched successfully:', response); // For debugging
         },
         error: (error: any) => {
           console.error('Error fetching movies:', error);
