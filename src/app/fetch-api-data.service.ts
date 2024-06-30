@@ -110,7 +110,11 @@ export class FetchApiDataService {
       catchError(this.handleError))
   }
 
-  //add a movie to favorite movies list   "/users/:Username/movies/:movieid"
+  /**
+   * 
+   * @param movieId add a movie to favorite movies list   "/users/:Username/movies/:movieid"
+   * @returns 
+   */
   addToFavorites(movieId: string): Observable<any> {
     const user = JSON.parse(localStorage.getItem('User') || '{}');
     const token = localStorage.getItem('token');
@@ -126,7 +130,11 @@ export class FetchApiDataService {
     );
   }
 
-  //edit user "/users/update/:Username"
+  /**
+   * 
+   * @param userDetails edit user "/users/update/:Username"
+   * @returns 
+   */
   editUser(userDetails: any): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.put(apiUrl + 'users/update/' + userDetails.Username, {

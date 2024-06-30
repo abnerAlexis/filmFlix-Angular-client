@@ -44,18 +44,12 @@ export class MovieCardComponent implements OnInit {
       stores them in the component.
    */
   getFavoriteMovies(): void {
-    this.fetchApiData.getUser()
-    .subscribe({
-      next: (response: any) => {
-        this.favoriteMovies = response.FavoriteMovies;
-        console.log('Favorite Movies in MovieComponent:', this.favoriteMovies);
-        console.log('Response from db:', response);
-      },
-      error: (error: any) => this.showError('Error fetching favorite movies.')
-    })
-  }
-
-  /**
+    this.fetchApiData.getAllMovies().subscribe({
+      next: (movies: any) => {
+        this.favoriteMovies = movies.filter((movie: { _id: any; }) => this.user.FavoriteMovies?.includes(movie._id));
+      }
+    });
+  }/**
    * @param movie Adds a movie to the user's favorites and updates the list.
    */
   addToFavorites(movie: any): void {
