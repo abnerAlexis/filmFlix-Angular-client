@@ -9,7 +9,10 @@ import { Router } from '@angular/router';
   styleUrl: './user-profile.component.scss'
 })
 export class UserProfileComponent implements OnInit {
+  
   @Input() userData: any = { Username: '', Password: '', Email: '', Birthday: '', FavoriteMovies: [] };
+  user: any = {};
+  movies: any[] = [];
   favoriteMovies: any[] = [];
 
   constructor(
@@ -35,13 +38,14 @@ export class UserProfileComponent implements OnInit {
   getUserProfile(): void {
     const username = localStorage.getItem('username');
     if (username) {
-      this.fetchApiData.getUser(username).subscribe({
+      this.fetchApiData.getUser().subscribe({
         next: (userData) => {
+          this.user = userData;
           this.userData.Username = userData.Username;
           this.userData.Password = userData.Password;
           this.userData.Email = userData.Email;
           this.userData.Birthday = userData.Birthday;
-          this.userData.FavoriteMovies = userData.FavoriteMovies;
+          this.userData.FavoriteMovies = userData.FavoriteMovies; // Assuming FavoriteMovies is an array of movie IDs
         },
         error: (error) => this.showError(error.message),
         complete: () => console.log(JSON.stringify(this.userData))
@@ -98,7 +102,7 @@ export class UserProfileComponent implements OnInit {
     this.fetchApiData.getAllMovies().subscribe({
       next: (moviesData) => {
         this.favoriteMovies = moviesData.filter((movie: any) => 
-          this.userData.favoriteMovies.includes(movie._id)
+          this.userData.FavoriteMovies.includes(movie._id)
         );
       },
       error: (error: any) => this.showError('Failed loading favorite movies.'),
