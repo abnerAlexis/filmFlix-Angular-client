@@ -11,7 +11,7 @@ import { MatSnackBar } from '@angular/material/snack-bar'; //Displays notificati
 })
 export class UserRegistrationFormComponent implements OnInit {
 
-  @Input() userData = { Username: '', Password: '', Email: '', Birthday: '' };
+  @Input() user = { Username: '', Password: '', Email: '', Birthday: '', FavoriteMovies: [] };
 
   constructor(
     public fetchApiData: FetchApiDataService,
@@ -22,11 +22,8 @@ export class UserRegistrationFormComponent implements OnInit {
   }
 
   registerUser(): void {
-    this.fetchApiData.userRegistration(this.userData).subscribe({
+    this.fetchApiData.userRegistration(this.user).subscribe({
       next: (response) => {
-        localStorage.setItem('user', JSON.stringify(response.user));
-        localStorage.setItem('token', response.token);
-        // console.log('Response: ' + JSON.stringify(response));
         this.snackBar.open('Registration successful!', 'OK', {
           duration: 2000
         });

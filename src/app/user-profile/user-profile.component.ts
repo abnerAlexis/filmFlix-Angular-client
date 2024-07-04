@@ -11,7 +11,6 @@ import { Router } from '@angular/router';
 export class UserProfileComponent implements OnInit {
   
   @Input() userData: any = { Username: '', Password: '', Email: '', Birthday: '', FavoriteMovies: [] };
-  user: any = {};
   movies: any[] = [];
   favoriteMovies: any[] = [];
 
@@ -36,16 +35,13 @@ export class UserProfileComponent implements OnInit {
    *  Retrieving user data from an API and populating the local user data object 
   */
   getUserProfile(): void {
-    const username = localStorage.getItem('username');
-    if (username) {
+    if (localStorage.getItem('username')) {
       this.fetchApiData.getUser().subscribe({
-        next: (userData) => {
-          this.user = userData;
-          this.userData.Username = userData.Username;
-          this.userData.Password = userData.Password;
-          this.userData.Email = userData.Email;
-          this.userData.Birthday = userData.Birthday;
-          this.userData.FavoriteMovies = userData.FavoriteMovies; // Assuming FavoriteMovies is an array of movie IDs
+        next: (response) => {
+          this.userData.Username = response.Username;
+          this.userData.Email = response.Email;
+          this.userData.Birthday = response.Birthday;
+          this.userData.FavoriteMovies = response.FavoriteMovies;
         },
         error: (error) => this.showError(error.message),
         complete: () => console.log(JSON.stringify(this.userData))
@@ -84,15 +80,15 @@ export class UserProfileComponent implements OnInit {
     }
   }
   
-   addFavoriteMovie(movieId: string): void {
-    this.fetchApiData.addToFavorites(movieId).subscribe({
-      next: (response: any) => {
-        this.favoriteMovies.push(response); 
-        console.log('New Favorite Movie: ', response);
-      },
-      error: (error) => this.showError('Error adding the movie to favorites.')
-    });
-  }
+  //  addFavoriteMovie(movieId: string): void {
+  //   this.fetchApiData.addToFavorites(movieId).subscribe({
+  //     next: (response: any) => {
+  //       this.favoriteMovies.push(response); 
+  //       console.log('New Favorite Movie: ', response);
+  //     },
+  //     error: (error) => this.showError('Error adding the movie to favorites.')
+  //   });
+  // }
    
   /**
    * Retrieving all movies from the API and filtering them to identify the user's favorite movies
@@ -122,13 +118,13 @@ export class UserProfileComponent implements OnInit {
   }
 
 
-  toggleFavorite(movieId: string): any {
-    if (this.isFavorite(movieId) === true) {
-    this.removeFavoriteMovie(movieId);
-    } else {
-    this.addFavoriteMovie(movieId);
-    }
-  }
+  // toggleFavorite(movieId: string): any {
+  //   if (this.isFavorite(movieId) === true) {
+  //   this.removeFavoriteMovie(movieId);
+  //   } else {
+  //   this.addFavoriteMovie(movieId);
+  //   }
+  // }
 
   isFavorite(movieId: string): boolean {
     return this.favoriteMovies.some(movie => movie._id === movieId);
