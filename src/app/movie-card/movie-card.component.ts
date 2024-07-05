@@ -45,19 +45,6 @@ export class MovieCardComponent implements OnInit {
     })
   }
 
-  // fetchUser() {
-  //   const username = localStorage.getItem('user') || '{}';
-  //   this.fetchApiData.getUser().subscribe({
-  //     next: (response: any) => {
-  //       console.log(`fetchUser.response: ${JSON.stringify(response)}`)
-  //       this.user.Username = response.Username;
-  //       this.user.FavoriteMovies = response.FavoriteMovies;
-  //       localStorage.setItem('user', response);
-  //     }
-  //   });
-  // }
-  
-
  /**
    * @param movie Adds a movie to the user's favorites and updates the list.
    */

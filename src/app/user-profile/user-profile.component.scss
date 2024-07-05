@@ -1,0 +1,161 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #f9f9f9;
+  }
+  
+  // Card styles
+  mat-card {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    background-color: #fff;
+  
+    &.user {
+      .header {
+        background-color: #1b77b9;
+        color: #fff;
+        padding: 16px;
+        border-radius: 8px 8px 0 0;
+      }
+  
+      mat-card-title {
+        font-size: 24px;
+        font-weight: bold;
+      }
+  
+      mat-card-content {
+        padding: 16px;
+  
+        p {
+          margin: 0 0 8px;
+          font-size: 16px;
+          color: #333;
+        }
+      }
+    }
+  
+    &.edit-userinfo {
+      .header {
+        background-color: #f44336;
+        color: #fff;
+        padding: 16px;
+        border-radius: 8px 8px 0 0;
+      }
+  
+      mat-card-title {
+        font-size: 24px;
+        font-weight: bold;
+      }
+  
+      mat-card-content {
+        padding: 16px;
+  
+        form {
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+  
+          label {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 1px;
+          }
+  
+          .inputs {
+            width: 100%;
+  
+            input {
+              width: 100%;
+            }
+          }
+        }
+  
+        .actions {
+          display: flex;
+          justify-content: flex-end;
+          gap: 10px;
+  
+          .button-delete {
+            background-color: #f44336;
+            color: #fff;
+          }
+  
+          .button-update {
+            background-color: #1b77b9;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+  
+  // Media queries for responsiveness
+  @media (max-width: 600px) {
+    .container {
+      padding: 10px;
+    }
+  
+    mat-card {
+      .header {
+        padding: 12px;
+      }
+  
+      mat-card-content {
+        padding: 12px;
+      }
+  
+      .actions {
+        flex-direction: column;
+        gap: 10px;
+  
+        button {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .movie-grid {  
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Four columns of equal width */
+    grid-gap: 10px; /* Spacing between cards */
+    margin: 50px;
+    align-items: center;
+
+    /* Styles for larger screens (e.g., desktops) */
+  @media (min-width: 768px) { 
+    grid-template-columns: repeat(4, 1fr); /* Four columns */
+  }
+
+  /* Styles for smaller screens (e.g., tablets, mobiles) */
+  @media (max-width: 767px) {
+    grid-template-columns: repeat(2, 1fr); /* Two columns */
+  }
+  }
+  
+    /* Movie card style */
+    mat-card {
+      background-color: rgb(233, 233, 233);
+      width: unset; /* Removes width for grid layout */
+      margin: 10px;
+      box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+    }
+    
+    /* Header style */
+    mat-card-title {
+      font-weight: bold; 
+    }
+    
+    /* Image Style */
+    img {
+        width: 100%;
+        object-fit: cover;
+        max-width: 100%; /* Added max-width for responsiveness */
+        aspect-ratio: 9 / 12;
+      }
+    
