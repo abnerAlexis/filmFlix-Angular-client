@@ -20,7 +20,7 @@ export class UserProfileComponent implements OnInit {
     private fetchApiData: FetchApiDataService,
     private snackBar: MatSnackBar,
     private router: Router,
-    public dialog: MatDialog,
+    private dialog: MatDialog,
   ) {
     // If no valid token, navigate to welcome page
     if (!localStorage.getItem('token')) {
@@ -211,11 +211,5 @@ export class UserProfileComponent implements OnInit {
 
   private showError(message: string) {
     this.snackBar.open(message, 'Error', { duration: 2000 });
-  }
-
-  logout(): void {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-    this.router.navigate(["welcome"]);
   }
 }

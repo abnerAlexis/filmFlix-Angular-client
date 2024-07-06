@@ -1,16 +1,5 @@
+<app-navbar></app-navbar>
 <div class="container">
-  <!-- User Information Card -->
-  <!-- <mat-card class="user">
-    <mat-card-header class="header">
-      <mat-card-title>{{user.Username}}</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <p>Email: {{user.Email}}</p>
-      <p>Birthday: {{user.Birthday | date }}</p>
-    </mat-card-content>
-  </mat-card> -->
-
-
   <!-- Edit User Information Form -->
   <mat-card class="edit-userinfo">
     <mat-card-header class="header">
@@ -84,7 +73,7 @@
         </button>
         <button 
           mat-raised-button 
-          (click)="openMovieInfoDialog('Synopsis', movie)">
+          color="primary" (click)="openMovieInfoDialog('Synopsis', movie)">
           Synopsis
         </button>
         <mat-icon (click)="toggleFavorite(movie._id)"

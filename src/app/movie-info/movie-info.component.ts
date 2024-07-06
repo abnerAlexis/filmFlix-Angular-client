@@ -11,7 +11,7 @@ export class MovieInfoComponent implements OnInit {
   movieInfo: any;
 
   constructor(
-    public dialogRef: MatDialogRef<MovieInfoComponent>,
+    private dialogRef: MatDialogRef<MovieInfoComponent>,
     private snackBar: MatSnackBar,
     @Inject(MAT_DIALOG_DATA) public data: any,
   ) { }

@@ -16,9 +16,9 @@ export class MovieCardComponent implements OnInit {
   user = {Username: '', FavoriteMovies: this.favMov};
 
   constructor(
-    public fetchApiData: FetchApiDataService,
-    public dialog: MatDialog,
-    public snackBar: MatSnackBar
+    private fetchApiData: FetchApiDataService,
+    private dialog: MatDialog,
+    private snackBar: MatSnackBar
   ) { }
 
   //After the component is mounted this will be called

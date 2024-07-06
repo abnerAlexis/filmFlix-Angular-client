@@ -9,7 +9,7 @@ import { UserLoginFormComponent } from '../user-login-form/user-login-form.compo
   styleUrl: './welcome-page.component.scss'
 })
 export class WelcomePageComponent implements OnInit{
-  constructor(public dialog: MatDialog) {}
+  constructor(private dialog: MatDialog) {}
   ngOnInit(): void {}
 
   openUserRegistrationDialog(): void {

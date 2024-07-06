@@ -10,6 +10,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatToolbar } from '@angular/material/toolbar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,6 +23,7 @@ import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { MatIconModule } from '@angular/material/icon';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { MovieInfoComponent } from './movie-info/movie-info.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 const appRoutes: Routes = [
   {path: 'welcome', component: WelcomePageComponent},
@@ -39,6 +41,7 @@ const appRoutes: Routes = [
     WelcomePageComponent,
     UserProfileComponent,
     MovieInfoComponent,
+    NavbarComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -51,6 +54,7 @@ const appRoutes: Routes = [
     MatFormFieldModule,
     MatDialogModule,
     MatSnackBarModule,
+    MatToolbar,
     MatIconModule,   
   ],
   providers: [provideHttpClient(), provideAnimationsAsync()],
