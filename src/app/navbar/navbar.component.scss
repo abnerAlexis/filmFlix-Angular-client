@@ -1,57 +1,40 @@
-@use '@angular/material' as mat;
-.movie-container {
-    display: flex; 
-    flex-wrap: nowrap; /* Prevent wrapping of items */
-    overflow-x: auto; /* Enable horizontal scrolling */
-    gap: 20px; 
-    padding: 30px; 
-    background-color: rgba(0, 0, 0, 0.8); 
-    white-space: nowrap; 
-}
-.movie-container mat-card {
-    background-color: rgba(0, 0, 0, 0.5); 
-    padding: 20px; 
-    border-radius: 10px; 
-    color: white; 
-    transition: background-color 0.3s ease; 
-    flex: 0 0 auto; 
-}
-
-.movie-container mat-card:hover {
-    background-color:#F3224D;
-}
-
-mat-card {
-    padding: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
-    img {
-        width: 100%;
-        max-width: 300px;
-        object-fit: cover;
-        border-radius: 10px;
-      }
-}
-
-.button-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 10px; 
-    margin-left: -17px;
-}
-
-
-// Adjust styles for smaller screens
-@media screen and (max-width: 768px) {
-    .movie-container {
-      flex-direction: column;
-      align-items: center;
-    }
-    mat-card{
-        width: 100%;
+.navbar {
+    /* Remove default toolbar margin */
+    margin: 0;
+    /* Adjust toolbar padding for  spacing */
+    .mat-toolbar {
+      padding: 15px 30px;
+  
+      background-color: #e0e2ec;
+      color: rgb(1, 1, 1); /* Text color within the toolbar */
+      font-size: 28px;
     }
   
-    mat-dialog-content {
-      max-width: 200px;
+    .button-group {
+      display: flex;
+      
+      .nav-buttons {
+        margin: 0 10px; 
+        color: inherit;
+        font-size: 16px;
+  
+        mat-icon {
+          margin-right: 9px; /* Add spacing between text and icon */
+        }
+  
+        &.logout {
+          color: #c00;
+        }
+      }
+    }
+  
+    /* Button holding the FilmFlix text (optional) */
+    button mat-button {
+      padding: 0; 
+    }
+  
+    h1 {
+      margin: 0;
+      font-size: 30px;
     }
   }

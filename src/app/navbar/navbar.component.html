@@ -1,37 +1,13 @@
-<!-- <span><mat-card>
-  <mat-card-header class="header">
-    <mat-card-title>
-      <h1 (click)="navigateToMovies()"></h1>
-    </mat-card-title>
-    <div class="user">
-      <mat-card-subtitle>{{user.Username}}</mat-card-subtitle>
-      <mat-card-subtitle>{{user.Email}}</mat-card-subtitle>
-    </div>
-  </mat-card-header>
-  <div class="button-group">
-    <button mat-button color="primary" (click)="navigateToMovies()">
-      Home
-    </button>
-    <button mat-button color="primary" (click)="navigateToProfile()">
-      Profile
-    </button>
-    <button mat-button color="primary" (click)="logOut()">
-      Logout
-    </button>
-  </div>
-</mat-card></span> -->
-
 <div class="navbar">
-    <mat-toolbar class="navbar" role="navigation" color="black">
-        <button mat-button (click)="navigateToMovies()">
-            <img src="../../Logo.png" alt="FilmFlix Logo" height="40" (click)="navigateToMovies()"> </button>
-        <div class="profile-logout-buttons">
-            <span class="example-spacer"></span>
-            <a mat-button (click)="navigateToProfile()"
-                class="nav-buttons">{{user.Username}}<mat-icon>account_circle</mat-icon></a>
-            <a mat-button (click)="logOut()" class="nav-buttons logout">Logout<mat-icon>logout</mat-icon></a>
-
-        </div>
-    </mat-toolbar>
-
+  <mat-toolbar class="navbar" role="navigation" color="black">
+    <button mat-button brand (click)="navigateToMovies()">
+      <!-- <img src="../../assets/Logo.png" alt="FilmFlix Logo" height="40" (click)="navigateToMovies()"> -->
+      <h1 (click)="navigateToMovies()"><strong>FilmFlix</strong></h1>
+    </button>
+    <div class="button-group">
+      <a mat-button (click)="logOut()" class="nav-buttons logout">Logout<mat-icon>logout</mat-icon></a>
+      <a mat-button (click)="navigateToProfile()"
+        class="nav-buttons">Profile/{{user.Username}}<mat-icon>account_circle</mat-icon></a>
+    </div>
+  </mat-toolbar>
 </div>
