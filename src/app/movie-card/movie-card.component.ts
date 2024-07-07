@@ -13,7 +13,7 @@ import { MovieInfoComponent } from '../movie-info/movie-info.component';
 export class MovieCardComponent implements OnInit {
   movies: any[] = [];
   favMov: string[] = [];  // we need this to prevent the warning in the next line.
-  user = {Username: '', FavoriteMovies: this.favMov};
+  user = { Username: '', FavoriteMovies: this.favMov };
 
   constructor(
     private fetchApiData: FetchApiDataService,
@@ -25,8 +25,8 @@ export class MovieCardComponent implements OnInit {
   ngOnInit(): void {
     this.getMovies();
     this.getFavorites();
-  }  
-  
+  }
+
   getMovies(): void {
     this.fetchApiData.getAllMovies()
       .subscribe({
@@ -45,24 +45,24 @@ export class MovieCardComponent implements OnInit {
     })
   }
 
- /**
-   * @param movie Adds a movie to the user's favorites and updates the list.
-   */
- addToFavorites(movieId: string): void {
-  this.fetchApiData.addToFavorites(movieId)
-    .subscribe({
-      next: (response: any) => {
-        this.user.FavoriteMovies.push(movieId)
-        this.snackBar.open('Movie successfully added to your favorites.', 'OK', {
-          duration: 2000,
-        });
-      },
-      error: (error: any) => {
-        this.showError('Error adding movie to favorites.');
-        console.error('Error:', error);
-      },
-    });
-}
+  /**
+    * @param movie Adds a movie to the user's favorites and updates the list.
+    */
+  addToFavorites(movieId: string): void {
+    this.fetchApiData.addToFavorites(movieId)
+      .subscribe({
+        next: (response: any) => {
+          this.user.FavoriteMovies.push(movieId)
+          this.snackBar.open('Movie successfully added to your favorites.', 'OK', {
+            duration: 2000,
+          });
+        },
+        error: (error: any) => {
+          this.showError('Error adding movie to favorites.');
+          console.error('Error:', error);
+        },
+      });
+  }
 
   /**
    * 
@@ -105,7 +105,7 @@ export class MovieCardComponent implements OnInit {
     this.isFavorite(movieId)
       ? this.removeFromFavorites(movieId)
       : this.addToFavorites(movieId);
-      console.log('isFavorite: ' + this.isFavorite(movieId));
+    console.log('isFavorite: ' + this.isFavorite(movieId));
   }
 
   private showError(message: string) {
@@ -115,7 +115,7 @@ export class MovieCardComponent implements OnInit {
   openMovieInfoDialog(type: string, movie: any): void {
     this.dialog.open(MovieInfoComponent, {
       width: '500px',
-      data: {type: type, movie: movie}
+      data: { type: type, movie: movie }
     });
   }
 }

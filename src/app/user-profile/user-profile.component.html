@@ -38,21 +38,22 @@
       <!-- Form Actions -->
       <mat-card-actions class="actions">
         <button mat-raised-button class="button-update" (click)="backToMovie()" type="submit">
-          Go Back
-        </button>
-        <button mat-raised-button class="button-delete" (click)="deleteAccount()">
-          Delete
+          Back
         </button>
         <button mat-raised-button class="button-update" (click)="editUserInfo()" type="submit">
           Update
         </button>
+        <button mat-raised-button class="button-delete" (click)="deleteAccount()">
+          Delete
+        </button>
+
       </mat-card-actions>
     </mat-card-content>
   </mat-card>
 </div>
 <!-- Favorite Movies -->
 <div>
-  <h2>Favorite Movies</h2>
+  <h2 style="margin: 60px;">Favorite Movies</h2>
   <div class="movie-grid">
     <mat-card *ngFor="let movie of favoriteMovies">
       <mat-card-header>
@@ -61,23 +62,18 @@
       </mat-card-header>
       <img src={{movie.ImageURL}} alt={{movie.Title}} />
       <mat-card-actions>
-        <button 
-          mat-raised-button 
-          (click)="openMovieInfoDialog('Genre', movie)">
+        <button mat-raised-button (click)="openMovieInfoDialog('Genre', movie)">
           Genre
         </button>
-        <button 
-          mat-raised-button 
-          (click)="openMovieInfoDialog('Director', movie)">
+        <button mat-raised-button (click)="openMovieInfoDialog('Director', movie)">
           Director
         </button>
-        <button 
-          mat-raised-button 
-          color="primary" (click)="openMovieInfoDialog('Synopsis', movie)">
+        <button mat-raised-button color="primary" (click)="openMovieInfoDialog('Synopsis', movie)">
           Synopsis
         </button>
-        <mat-icon (click)="toggleFavorite(movie._id)"
-          [style.color]="isFavorite(movie._id) ? '#A40101' : 'white'">favorite-border</mat-icon>
+        <mat-icon (click)="removeFromFavorites(movie._id)" [style.color]="'#A40101'">
+          favorite-border
+        </mat-icon>
       </mat-card-actions>
     </mat-card>
   </div>

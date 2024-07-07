@@ -1,56 +1,50 @@
-.movie-grid {  
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Four columns of equal width */
-    grid-gap: 10px; /* Spacing between cards */
-    margin: 50px;
-    align-items: center;
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
+  margin: 50px;
+  align-items: center;
 
-    /* Styles for larger screens (e.g., desktops) */
-  @media (min-width: 768px) { 
-    grid-template-columns: repeat(4, 1fr); /* Four columns */
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(4, 1fr);
   }
 
-  /* Styles for smaller screens (e.g., tablets, mobiles) */
   @media (max-width: 767px) {
-    grid-template-columns: repeat(2, 1fr); /* Two columns */
+    grid-template-columns: repeat(2, 1fr);
   }
-  }
-  
-    /* Movie card style */
-    mat-card {
-      background-color: rgb(233, 233, 233);
-      width: unset; /* Removes width for grid layout */
-      margin: 10px;
-      box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-      cursor: pointer;
-    }
-    
-    /* Header style */
-    mat-card-title {
-      font-weight: bold; 
-    }
-    
-    /* Image Style */
-    img {
-        width: 100%;
-        object-fit: cover;
-        max-width: 100%; /* Added max-width for responsiveness */
-        aspect-ratio: 9 / 12;
-      }
-    
-    /* Buttons Style */
-    mat-raised-button {
-      margin-right: 5px;
-    }
-    
-    /*  The favorite icon Style */
-    mat-icon {
-      margin-left: 10px;
-      cursor: pointer;
-    }
-    
-    /* Hover effects on cards and buttons */
-    mat-card:hover,
-    mat-raised-button:hover {
-      transform: scale(1.02); /* Slight scale up vertically on hover */
-    }
+}
+
+mat-card {
+  background-color: rgb(233, 233, 233);
+  width: unset;
+  /* Removes width for grid layout */
+  margin: 10px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+mat-card-title {
+  font-weight: bold;
+}
+
+img {
+  width: 100%;
+  object-fit: cover;
+  max-width: 100%;
+  aspect-ratio: 9 / 12;
+}
+
+mat-raised-button {
+  margin-right: 5px;
+}
+
+mat-icon {
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+mat-card:hover,
+mat-raised-button:hover {
+  transform: scale(1.02);
+  /* Slight scale up vertically on hover */
+}

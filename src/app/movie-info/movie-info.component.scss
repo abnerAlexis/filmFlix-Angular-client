@@ -1,23 +1,21 @@
 .movie-info-container {
   display: flex;
-  flex-direction: column; /* Stack content vertically */
+  flex-direction: column;
+  /* Stack content vertically */
   padding: 20px;
   background-color: rgb(233, 233, 233);
 }
 
-/* Style movie title (assuming it's displayed as a heading) */
 .movie-title {
   font-weight: bold;
   font-size: 1.2em;
   margin-bottom: 10px;
 }
 
-/* Style movie information content */
 .movie-info {
   margin-bottom: 10px;
 }
 
-/* Style error message */
 .error-message {
   color: red;
   font-weight: bold;

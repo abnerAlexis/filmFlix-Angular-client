@@ -11,7 +11,6 @@ import { MovieInfoComponent } from '../movie-info/movie-info.component';
   styleUrl: './user-profile.component.scss'
 })
 export class UserProfileComponent implements OnInit {
-
   favoriteMovieIds: any[] = [];
   favoriteMovies: any[] = [];
   @Input() user: any = { Username: '', Password: '', Email: '', Birthday: '', FavoriteMovies: this.favoriteMovies };
@@ -58,7 +57,7 @@ export class UserProfileComponent implements OnInit {
   }
 
   /**
-   *  Retrieving user data from an API and populating the local user data object 
+   *  Retrieving user data from the API and populating the local user data object 
   */
   getUserProfile(): void {
     if (localStorage.getItem('username')) {
@@ -96,7 +95,6 @@ export class UserProfileComponent implements OnInit {
     if (confirm('Are you sure you want to delete your account? This action cannot be undone.')) {
       this.fetchApiData.deleteUser().subscribe({
         next: () => {
-          // Account deleted successfully
           localStorage.removeItem('user');
           this.snackBar.open('Account deleted successfully.', 'OK', { duration: 2000 });
           this.router.navigate(['login']);
@@ -116,7 +114,7 @@ export class UserProfileComponent implements OnInit {
         error: (err: any) => this.showError(`Error fetching movies. Error: ${JSON.stringify(err)}`),
       });
   }
-   
+
   /**
    * Retrieving all movies from the API and filtering them to identify the user's favorite movies
    * based on the movies' IDs included in the user.favoriteMovies array.
@@ -138,21 +136,21 @@ export class UserProfileComponent implements OnInit {
   /**
    * @param movie Adds a movie to the user's favorites and updates the list.
    */
- addToFavorites(movieId: string): void {
-  this.fetchApiData.addToFavorites(movieId)
-    .subscribe({
-      next: (response: any) => {
-        this.user.FavoriteMovies.push(movieId)
-        this.snackBar.open('Movie successfully added to your favorites.', 'OK', {
-          duration: 2000,
-        });
-      },
-      error: (error: any) => {
-        this.showError('Error adding movie to favorites.');
-        console.error('Error:', error);
-      },
-    });
-}
+  addToFavorites(movieId: string): void {
+    this.fetchApiData.addToFavorites(movieId)
+      .subscribe({
+        next: (response: any) => {
+          this.user.FavoriteMovies.push(movieId)
+          this.snackBar.open('Movie successfully added to your favorites.', 'OK', {
+            duration: 2000,
+          });
+        },
+        error: (error: any) => {
+          this.showError('Error adding movie to favorites.');
+          console.error('Error:', error);
+        },
+      });
+  }
 
   /**
    * 
@@ -168,6 +166,7 @@ export class UserProfileComponent implements OnInit {
           this.snackBar.open('Movie successfully removed from your favorites.', 'OK', {
             duration: 2000,
           });
+          this.getFavorites();
         },
         error: (error: any) => {
           this.showError('Error removing movie from favorites.');
@@ -180,32 +179,20 @@ export class UserProfileComponent implements OnInit {
     this.router.navigate(['movies']);
   }
 
-   /**
-   * 
-   * @param movieId Returns true if movie's ID exists in favorites list, 
-   * indicating it's a favorite.
-   * @returns 
-   */
+  /**
+  * 
+  * @param movieId Returns true if movie's ID exists in favorites list, 
+  * indicating it's a favorite.
+  * @returns 
+  */
   isFavorite(title: string): boolean {
     return this.user.FavoriteMovies.includes(title);
-  }
-
-  /**
-   * 
-   * @param movie Checks if movie's a favorite, 
-   * then adds or removes it from favorites list.
-   */
-  toggleFavorite(movieId: string): void {
-    this.isFavorite(movieId)
-      ? this.removeFromFavorites(movieId)
-      : this.addToFavorites(movieId);
-      // console.log('isFavorite: ' + this.isFavorite(movieId));
   }
 
   openMovieInfoDialog(type: string, movie: any): void {
     this.dialog.open(MovieInfoComponent, {
       width: '500px',
-      data: {type: type, movie: movie}
+      data: { type: type, movie: movie }
     });
   }
 

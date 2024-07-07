@@ -10,19 +10,19 @@ import { Router } from '@angular/router';
   templateUrl: './user-login-form.component.html',
   styleUrl: './user-login-form.component.scss'
 })
-export class UserLoginFormComponent implements OnInit{
+export class UserLoginFormComponent implements OnInit {
 
-  @Input() userData = { Username: '', Password: ''};
+  @Input() userData = { Username: '', Password: '' };
 
   constructor(
     private fetchApiData: FetchApiDataService,
     private dialogRef: MatDialogRef<UserRegistrationFormComponent>,
     private snackBar: MatSnackBar,
     private router: Router,
-  ) {}
-  
-  ngOnInit(): void {}
-    
+  ) { }
+
+  ngOnInit(): void { }
+
   loginUser(): void {
     const loginData = {
       Username: this.userData.Username,

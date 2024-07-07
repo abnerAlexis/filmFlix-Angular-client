@@ -5,9 +5,9 @@
       <h1 (click)="navigateToMovies()"><strong>FilmFlix</strong></h1>
     </button>
     <div class="button-group">
-      <a mat-button (click)="logOut()" class="nav-buttons logout">Logout<mat-icon>logout</mat-icon></a>
       <a mat-button (click)="navigateToProfile()"
         class="nav-buttons">Profile/{{user.Username}}<mat-icon>account_circle</mat-icon></a>
+        <a mat-button (click)="logOut()" class="nav-buttons logout">Logout<mat-icon>logout</mat-icon></a>
     </div>
   </mat-toolbar>
 </div>
