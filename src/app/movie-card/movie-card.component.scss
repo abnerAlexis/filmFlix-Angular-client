@@ -1,0 +1,50 @@
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
+  margin: 50px;
+  align-items: center;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @media (max-width: 767px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+mat-card {
+  background-color: rgb(233, 233, 233);
+  width: unset;
+  /* Removes width for grid layout */
+  margin: 10px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+mat-card-title {
+  font-weight: bold;
+}
+
+img {
+  width: 100%;
+  object-fit: cover;
+  max-width: 100%;
+  aspect-ratio: 9 / 12;
+}
+
+mat-raised-button {
+  margin-right: 5px;
+}
+
+mat-icon {
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+mat-card:hover,
+mat-raised-button:hover {
+  transform: scale(1.02);
+  /* Slight scale up vertically on hover */
+}

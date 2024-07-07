@@ -1,0 +1,133 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #f9f9f9;
+}
+
+mat-card {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+
+  &.edit-userinfo {
+    .header {
+      background-color: #817f7f;
+      color: #fff;
+      padding: 16px;
+      margin-bottom: 30px;
+      border-radius: 8px 8px 0 0;
+    }
+
+    mat-card-content {
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        label {
+          font-size: 16px;
+          margin-bottom: 1px;
+        }
+        .inputs {
+          width: 100%;
+        }
+      }
+
+      .actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+
+        .button-delete {
+          background-color: #f44336;
+          color: #fff;
+        }
+
+        .button-update {
+          background-color: #817f7f;
+          color: #fff;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 10px;
+  }
+
+  mat-card {
+    .header {
+      padding: 12px;
+    }
+
+    mat-card-content {
+      padding: 12px;
+    }
+
+    .actions {
+      flex-direction: column;
+      gap: 10px;
+
+      button {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
+  margin: 50px;
+  align-items: center;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @media (max-width: 767px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+mat-card {
+  background-color: rgb(233, 233, 233);
+  width: unset;
+  /* Remove width for grid layout */
+  margin: 10px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+mat-card-title {
+  font-weight: bold;
+}
+
+img {
+  width: 100%;
+  object-fit: cover;
+  max-width: 100%;
+  /* max-width for responsiveness */
+  aspect-ratio: 9 / 12;
+}
+
+mat-raised-button {
+  margin-right: 5px;
+}
+
+mat-icon {
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+mat-card:hover,
+mat-raised-button:hover {
+  transform: scale(1.02);
+  /* Scale up vertically on hover */
+}
