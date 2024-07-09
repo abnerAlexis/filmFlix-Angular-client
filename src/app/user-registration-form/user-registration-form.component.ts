@@ -51,7 +51,7 @@ export class UserRegistrationFormComponent implements OnInit {
   loginUser(loginData: any): void {
         this.fetchApiData.userLogin(loginData).subscribe({
       next: (response) => {
-        console.log(`LoginData: ${loginData}`)
+        console.log(`LoginData: ${JSON.stringify(loginData)}`)
         localStorage.setItem('username', response.user.Username);
         localStorage.setItem('token', response.token);
         this.snackBar.open('Login successful!', 'OK', {

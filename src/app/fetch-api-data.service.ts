@@ -127,7 +127,7 @@ export class FetchApiDataService {
       console.error('Some error occurred:', err.error.message);
     } else {
       console.log(`Error Status code ${err.status}`);
-      console.log(`Error body is: ${err}`);
+      console.log(`Error body is: ${JSON.stringify(err)}`);
     }
     return throwError(() => ('Something bad happened. Try again later.'));
   }
