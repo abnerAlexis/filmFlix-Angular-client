@@ -1,0 +1,15 @@
+.main-page {
+    display: flex; 
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  h1 {
+    margin: 10px 10px;
+    text-align: center; 
+  }
+  
+  button[mat-raised-button] {
+    margin: 10px 10px;
+  }
